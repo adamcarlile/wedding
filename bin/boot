@@ -1,0 +1,22 @@
+#!/bin/bash
+set -euo pipefail
+
+WORKING_DIR=${INSTALL_PATH:-$PWD}
+
+set +e
+cd $WORKING_DIR && rake db:version
+MISSING_DB=$?
+set -e
+
+if [[ $MISSING_DB != 0 ]]; then
+  echo "== Setup Database =="
+  cd $WORKING_DIR && rake db:setup
+else
+  echo "== Migrating Database =="
+  cd $WORKING_DIR && rake db:migrate
+fi
+
+echo "== Enqueue Jobs =="
+cd $WORKING_DIR && rake jobs:recurring
+
+bundle exec puma -C config/puma.rb
