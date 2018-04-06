@@ -1,0 +1,11 @@
+tr
+  td 
+    code = party.code
+  td
+    = content_tag(:div, render(party.invitees), class: 'tags')
+  td
+    = party.invitees_count
+  td
+    .is-pulled-right
+      = link_to fa_icon('pencil'), edit_admin_party_path(party), class: 'button is-small'
+      = link_to fa_icon('trash'), admin_party_path(party), class: 'button is-small', method: :delete

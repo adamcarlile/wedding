@@ -1,0 +1,6 @@
+nav.level
+  div.level-left
+    div.level-item
+      h2.title.is-3 = title
+  div.level-right
+    = content_for?(:controls) ? yield(:controls) : render('controls')
