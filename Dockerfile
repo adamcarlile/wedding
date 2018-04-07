@@ -17,4 +17,4 @@ RUN bundle exec rake assets:precompile
 
 EXPOSE 80
 
-CMD /opt/bin/boot
+CMD /app/bin/boot
