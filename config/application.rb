@@ -34,6 +34,15 @@ module Wedding
       admin.password = ENV['ADMIN_PASSWORD']
     end
 
+    if ENV["RAILS_LOG_TO_STDOUT"].present?
+      log_level                = String(ENV['LOG_LEVEL'] || "info").upcase
+      config.logger            = ActiveSupport::Logger.new(STDOUT)
+      config.logger.level      = Logger.const_get(log_level)
+      config.log_level         = log_level
+      config.lograge.formatter = Lograge::Formatters::Json.new
+      config.lograge.enabled   = true
+    end
+
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
