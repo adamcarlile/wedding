@@ -13,7 +13,7 @@ COPY Gemfile* ./
 RUN  gem install bundler && bundle check || bundle install --jobs=4 --retry=3
 ENV RAILS_ENV production
 COPY . ./
-RUN bundle exec rake assets:precompile
+RUN SECRET_KEY_BASE=test bundle exec rake assets:precompile
 
 EXPOSE 80
 
