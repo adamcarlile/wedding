@@ -16,7 +16,4 @@ else
   cd $WORKING_DIR && rake db:migrate
 fi
 
-echo "== Enqueue Jobs =="
-cd $WORKING_DIR && rake jobs:recurring
-
 bundle exec puma -C config/puma.rb
