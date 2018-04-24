@@ -17,6 +17,8 @@ gem "cocoon"
 gem 'jquery-rails'
 gem 'builder'
 gem "lograge"
+gem 'rails_warden'
+gem 'virtus'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

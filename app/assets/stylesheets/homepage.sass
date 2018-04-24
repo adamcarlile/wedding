@@ -1,0 +1,26 @@
+body
+  background:
+    image: asset_url("splash/beach-1.jpg")
+    repeat: no-repeat
+    size: cover
+    attachment: fixed
+    position: center
+  
+#splash
+  .hero-body
+    padding:
+      top: 12rem
+      bottom: 12rem
+
+  h1
+    color: #ffffff
+    font-size: 4em
+    @extend .drop-shadow
+
+  h2
+    font-weight: bold
+    color: #FDFDF0
+    @extend .drop-shadow
+
+.drop-shadow
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5)

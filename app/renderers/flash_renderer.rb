@@ -28,7 +28,7 @@ class FlashRenderer
 
     def type_mapping
       @type_mapping ||= Hash.new('is-info').merge({
-        'alert'  => 'is-danger'
+        alert: 'is-danger'
       })
     end
 

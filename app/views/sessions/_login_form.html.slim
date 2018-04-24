@@ -1,0 +1,7 @@
+div.column.is-half.is-offset-one-quarter.box
+  = render_flashes
+  = simple_form_for(login_form, url: sessions_path, remote: true, as: :user) do |f|
+    div.field.has-addons
+      = f.input :code, label: false, placeholder: 'Invite Code'
+      = f.input :lastname, label: false, placeholder: 'Lastname', wrapper_html: { class: 'is-expanded' }
+      = f.button :submit, 'Go!', class: 'is-primary'

@@ -1,0 +1,2 @@
+module Authenticated::DashboardHelper
+end
