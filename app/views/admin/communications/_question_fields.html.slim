@@ -1,0 +1,7 @@
+- if f.object.present?
+  .nested-fields.columns
+    .column
+      = f.input :prompt, label: false, placeholder: 'Prompt'
+    .column
+      = f.input :css_class, as: :select_box, collection: f.object.class.css_classes, label: false, prompt: 'Select Prompt Type'
+    = link_to_remove_association fa_icon(:minus), f, class: 'button is-danger'

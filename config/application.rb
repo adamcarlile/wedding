@@ -30,8 +30,8 @@ module Wedding
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.admin = ActiveSupport::OrderedOptions.new.tap do |admin|
-      admin.username = ENV['ADMIN_USERNAME']
-      admin.password = ENV['ADMIN_PASSWORD']
+      admin.username    = ENV['ADMIN_USERNAME']
+      admin.password    = ENV['ADMIN_PASSWORD']
     end
 
     if ENV["RAILS_LOG_TO_STDOUT"].present?

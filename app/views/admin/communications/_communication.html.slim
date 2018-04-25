@@ -1,0 +1,9 @@
+tr
+  td 
+    = communcation.title
+  td
+    = content_tag(:div, render(communcation.questions), class: 'tags')
+  td
+    .is-pulled-right
+      = link_to fa_icon('pencil'), edit_admin_party_path(party), class: 'button is-small'
+      = link_to fa_icon('trash'), admin_party_path(party), class: 'button is-small', method: :delete

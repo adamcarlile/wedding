@@ -1,10 +1,10 @@
 .nested-fields.columns
   .column
-    = f.input :firstname
+    = f.input :firstname, label: false, placeholder: 'Firstname'
   .column
-    = f.input :lastname
+    = f.input :lastname, label: false, placeholder: 'Lastname'
   .column
-    = f.input :phone, as: :tel
+    = f.input :phone, as: :tel, label: false, placeholder: 'Tel: +447776123456'
   .column
-    = f.input :email
+    = f.input :email, label: false, placeholder: 'example@example.com'
   = link_to_remove_association fa_icon(:minus), f, class: 'button is-danger'
