@@ -4,7 +4,7 @@
   .column
     = f.input :lastname
   .column
-    = f.input :phone
+    = f.input :phone, as: :tel
   .column
     = f.input :email
   = link_to_remove_association fa_icon(:minus), f, class: 'button is-danger'

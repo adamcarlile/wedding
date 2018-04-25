@@ -15,4 +15,6 @@
 //= require activestorage
 //= require turbolinks
 //= require cocoon
+//= require intlTelInput
+//= require libphonenumber/utils
 //= require_tree .
