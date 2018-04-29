@@ -1,0 +1,1 @@
+Sidekiq::Web.set :session_secret, Rails.application.secrets[:secret_key_base]

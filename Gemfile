@@ -19,6 +19,8 @@ gem 'builder'
 gem "lograge"
 gem 'rails_warden'
 gem 'virtus'
+gem "transitions", require: ["transitions", "active_model/transitions"]
+gem 'sidekiq', require: ["sidekiq", "sidekiq/web"]
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

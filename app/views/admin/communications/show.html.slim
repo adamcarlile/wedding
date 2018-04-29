@@ -1,1 +1,11 @@
 h2.is-size-4.title = resource.title
+div.columns
+  div.column.is-one-third
+    = simple_form_for(send_form, url: admin_communication_sends_path(resource), as: :senders_form) do |f|
+      div.field.has-addons
+        = f.input :party_priority_group, as: :select_box, \
+          collection: Party::PRIORITIES, label_method: ->(value) { value.to_s.humanize }, \
+          label: false, prompt: 'Select a Group'
+        = f.button :submit, 'Send', class: 'is-primary'
+  div.column
+    

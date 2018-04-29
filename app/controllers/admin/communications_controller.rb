@@ -9,6 +9,9 @@ module Admin
 
     def edit
     end
+
+    def show
+    end
     
     def update
       if resource.update(permitted_params)
@@ -40,6 +43,11 @@ module Admin
     def permitted_params
       params.require(:communication).permit(:title, :body, :followup, questions_attributes: [:prompt, :css_class, :_destroy])
     end
+
+    def send_form
+      @send_form ||= Admin::Communications::SendersForm.new
+    end
+    helper_method :send_form
 
     def collection
       @collection ||= Communication.all

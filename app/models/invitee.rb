@@ -8,6 +8,10 @@ class Invitee < ApplicationRecord
   validates :firstname, presence: true
   validates :lastname, presence: true
 
+  def to_email
+    "<#{name}> #{email}"
+  end
+
   def name
     [firstname, lastname].join(' ')
   end

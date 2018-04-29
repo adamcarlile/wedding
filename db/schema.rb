@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_29_181208) do
+ActiveRecord::Schema.define(version: 2018_04_29_211928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 2018_04_29_181208) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["communication_id"], name: "index_communications_questions_on_communication_id"
+  end
+
+  create_table "communications_responses", force: :cascade do |t|
+    t.uuid "party_id"
+    t.uuid "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["party_id"], name: "index_communications_responses_on_party_id"
+    t.index ["question_id"], name: "index_communications_responses_on_question_id"
   end
 
   create_table "invitees", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
