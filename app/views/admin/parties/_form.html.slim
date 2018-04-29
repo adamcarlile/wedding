@@ -1,3 +1,8 @@
+div.columns
+  div.field.column
+    = f.input :category, as: :select_box, collection: Party::CATEGORIES, label_method: ->(value) { value.to_s.humanize }
+  div.field.column
+    = f.input :priority, as: :select_box, collection: Party::PRIORITIES, label_method: ->(value) { value.to_s.humanize }
 = f.simple_fields_for :invitees do |invitee|
   = render 'invitee_fields', f: invitee
 div.field

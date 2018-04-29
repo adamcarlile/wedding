@@ -1,9 +1,9 @@
 tr
   td 
-    = communcation.title
+    = link_to communication.title, admin_communication_path(communication)
   td
-    = content_tag(:div, render(communcation.questions), class: 'tags')
+    = content_tag(:div, render(communication.questions), class: 'tags')
   td
     .is-pulled-right
-      = link_to fa_icon('pencil'), edit_admin_party_path(party), class: 'button is-small'
-      = link_to fa_icon('trash'), admin_party_path(party), class: 'button is-small', method: :delete
+      = link_to fa_icon('pencil'), edit_admin_communication_path(communication), class: 'button is-small'
+      = link_to fa_icon('trash'), admin_communication_path(communication), class: 'button is-small', method: :delete

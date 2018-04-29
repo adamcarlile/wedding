@@ -37,7 +37,7 @@ module Admin
     protected
 
     def permitted_params
-      params.require(:party).permit(invitees_attributes: [:id, :firstname, :lastname, :phone, :email, :_destroy])
+      params.require(:party).permit(:category, :priority, invitees_attributes: [:id, :firstname, :lastname, :phone, :email, :_destroy])
     end
 
     def collection

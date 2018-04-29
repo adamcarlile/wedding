@@ -14,9 +14,3 @@ div.field
   = link_to_add_association fa_icon(:plus), f, :questions, class: 'button is-primary'
 div.field
   = f.button :submit, class: 'is-primary'
-/ = f.simple_fields_for :invitees do |invitee|
-/   = render 'invitee_fields', f: invitee
-/ div.field
-/   = link_to_add_association fa_icon(:plus), f, :invitees, class: 'button is-primary'
-/ div.field
-/   = f.button :submit, class: 'is-primary'

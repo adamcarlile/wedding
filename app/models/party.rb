@@ -1,8 +1,14 @@
 class Party < ApplicationRecord
+  CATEGORIES = [:grooms_family, :grooms_friends, :brides_family, :brides_friends]
+  PRIORITIES = [:high, :medium, :low]
+
   has_many :invitees, inverse_of: :party
   accepts_nested_attributes_for :invitees, allow_destroy: true, reject_if: :all_blank
 
   before_create { generate_code! }
+
+  validates :category, presence: true
+  validates :priority, presence: true
 
   def to_s
     if family_name?

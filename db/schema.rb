@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_25_222727) do
+ActiveRecord::Schema.define(version: 2018_04_29_181208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 2018_04_25_222727) do
     t.string "followup"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "communications_deliveries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "communication_id"
+    t.uuid "invitee_id"
+    t.string "state"
+    t.datetime "sent_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["communication_id"], name: "index_communications_deliveries_on_communication_id"
+    t.index ["invitee_id"], name: "index_communications_deliveries_on_invitee_id"
   end
 
   create_table "communications_questions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -49,7 +60,11 @@ ActiveRecord::Schema.define(version: 2018_04_25_222727) do
     t.integer "invitees_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
+    t.string "priority"
+    t.index ["category"], name: "index_parties_on_category"
     t.index ["code"], name: "index_parties_on_code"
+    t.index ["priority"], name: "index_parties_on_priority"
   end
 
 end

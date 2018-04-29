@@ -13,7 +13,6 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require cocoon
 //= require intlTelInput
 //= require libphonenumber/utils
