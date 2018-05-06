@@ -15,6 +15,7 @@ module Admin
     
     def update
       if resource.update(permitted_params)
+        resource.image.attach(params[:communication][:image]) if params[:communication][:image]
         redirect_to admin_communications_path, notice: 'Communication updated'
       else
         render :edit
@@ -41,7 +42,7 @@ module Admin
     protected
 
     def permitted_params
-      params.require(:communication).permit(:title, :body, :followup, questions_attributes: [:prompt, :css_class, :_destroy])
+      params.require(:communication).permit(:title, :body, :followup, questions_attributes: [:id, :prompt, :css_class, :_destroy])
     end
 
     def send_form

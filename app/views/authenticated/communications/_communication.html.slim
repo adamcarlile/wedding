@@ -1,0 +1,7 @@
+div.has-text-centered	
+  = image_tag communication.image.variant(resize: "600x600") if communication.image.attached?
+div.content
+  = raw communication.body
+div.questions
+  div.columns
+    = render(communication.questions)

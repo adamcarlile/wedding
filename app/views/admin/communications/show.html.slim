@@ -7,5 +7,21 @@ div.columns
           collection: Party::PRIORITIES, label_method: ->(value) { value.to_s.humanize }, \
           label: false, prompt: 'Select a Group'
         = f.button :submit, 'Send', class: 'is-primary'
-  div.column
-    
+    br
+    h3.is-size-5.title Already Sent to
+    table.table
+      thead
+        tr
+          th *{style: "width: 5px; padding: 0px"}
+          th Name
+          th
+      tbody
+        = render(resource.deliveries)
+  - if resource.image.attached?
+    div.column
+      = image_tag resource.image.variant(resize: "600x600") if resource.image.attached?
+  div.column.content
+    = raw resource.body
+    = content_tag(:div, render(resource.questions), class: 'tags')
+    hr
+    = raw resource.followup

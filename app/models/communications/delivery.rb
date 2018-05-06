@@ -10,7 +10,7 @@ class Communications::Delivery < ApplicationRecord
     state :failed
 
     event :dispatch do
-      transitions to: :sent, from: [:pending, :failed]
+      transitions to: :dispatched, from: [:pending, :failed]
     end
 
     event :unsuccessful do
@@ -19,6 +19,7 @@ class Communications::Delivery < ApplicationRecord
   end
 
   def deliver!
+    return if dispatched?
     CommunicationsMailer.question(self).deliver
     dispatch!
   rescue => e

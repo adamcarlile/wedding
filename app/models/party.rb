@@ -3,6 +3,8 @@ class Party < ApplicationRecord
   PRIORITIES = [:high, :medium, :low]
 
   has_many :invitees, inverse_of: :party
+  has_many :communications, -> { distinct }, through: :invitees
+
   accepts_nested_attributes_for :invitees, allow_destroy: true, reject_if: :all_blank
 
   before_create { generate_code! }

@@ -1,0 +1,7 @@
+tr
+  td *{class: delivery.state }
+  td
+    p.title.is-size-6 = delivery.invitee.name
+    p.subtitle.is-size-7 = delivery.invitee.email
+  td
+    = link_to fa_icon('envelope'), '#', class: 'button'

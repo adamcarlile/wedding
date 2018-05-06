@@ -1,1 +1,2 @@
-<h1><%= @delivery.communication.title %></h1>
+<%= image_tag @delivery.communication.image.attachment.variant(resize: "600x600") if @delivery.communication.image.attached? %>
+<%= raw @delivery.communication.body %>

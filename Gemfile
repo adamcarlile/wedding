@@ -21,6 +21,7 @@ gem 'rails_warden'
 gem 'virtus'
 gem "transitions", require: ["transitions", "active_model/transitions"]
 gem 'sidekiq', require: ["sidekiq", "sidekiq/web"]
+gem 'roadie-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -29,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'intl-tel-input-rails'
 
-gem 'mini_magick', '~> 4.8'
+gem 'image_processing'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 

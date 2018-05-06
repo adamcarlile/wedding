@@ -8,14 +8,17 @@
   .remove_fields
     margin-top: 0.75rem
 
-.priority-high
+.priority-high, .dispatched
   padding: 0px !important
   @extend .is-success
 
-.priority-medium
+.priority-medium, .pending
   padding: 0px !important
   @extend .is-warning
 
 .priority-low
   padding: 0px !important
   @extend .is-dark
+
+.failed
+  @extend .is-danger

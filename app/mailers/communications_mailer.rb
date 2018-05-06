@@ -1,4 +1,6 @@
 class CommunicationsMailer < ApplicationMailer
+  include Roadie::Rails::Automatic
+  
   def question(delivery)
     @delivery = delivery
     

@@ -10,5 +10,9 @@ module Communications
 
     belongs_to :communication
 
+    def record_response!(party)
+      Communications::Response.find_or_create_by(party: party, question: self)
+    end
+
   end
 end
