@@ -1,6 +1,7 @@
 Rails.configuration.middleware.use RailsWarden::Manager do |manager|
   manager.default_strategies :party_code
   manager.failure_app = -> (env) { HomepageController.action(:show).call(env) }
+  manager.intercept_401 = false
 end
 
 Warden::Manager.serialize_into_session do |party|
