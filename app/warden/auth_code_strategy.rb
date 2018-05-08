@@ -1,6 +1,5 @@
 class AuthCodeStrategy < Warden::Strategies::Base
   def valid?
-    binding.pry
     params[:token].present?
   end
 
