@@ -29,10 +29,14 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'intl-tel-input-rails'
-
+gem 'rollbar'
 gem 'image_processing'
 
 gem 'bootsnap', '>= 1.1.0', require: false
+
+group :production do
+  gem "aws-sdk-s3", require: false
+end
 
 group :development, :test do
   gem "better_errors"

@@ -1,7 +1,7 @@
 FROM ruby:2.4.1-slim
 RUN apt-get update -qq && apt-get install -qq -y --no-install-recommends \
         curl build-essential git-core libpq-dev postgresql-client nodejs \
-        imagemagick --fix-missing  \
+        graphicsmagick --fix-missing  \
         && rm -rf /var/lib/apt/lists/*
 
 ENV INSTALL_PATH /app

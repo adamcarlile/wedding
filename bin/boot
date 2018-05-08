@@ -2,6 +2,7 @@
 set -euo pipefail
 
 WORKING_DIR=${INSTALL_PATH:-$PWD}
+RUN_MODE=${1:-"server"}
 
 set +e
 cd $WORKING_DIR && rake db:version
@@ -16,4 +17,8 @@ else
   cd $WORKING_DIR && rake db:migrate
 fi
 
-bundle exec puma -C config/puma.rb
+if [[ $RUN_MODE = "server" ]]; then
+  bundle exec puma -C config/puma.rb
+elif [[ $RUN_MODE = "sidekiq" ]]; then
+  bundle exec sidekiq
+fi

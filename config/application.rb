@@ -29,10 +29,27 @@ module Wedding
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    config.action_mailer.smtp_settings = {
+      authentication: :plain,
+      address: ENV.fetch("SMTP_ADDRESS") { "localhost" },
+      port: ENV.fetch("SMTP_PORT") { 1025 },
+      domain: ENV.fetch("SMTP_DOMAIN") { nil },
+      user_name: ENV.fetch("SMTP_USER_NAME") { nil},
+      password: ENV.fetch("SMTP_PASSWORD") { nil }
+    }.reject {|k, v| v.blank? }
+
+    config.action_mailer.default_url_options = {
+      host: ENV.fetch("APPLICATION_HOSTNAME") { 'localhost' },
+      port: ENV.fetch("APPLICATION_PORT")     { 3000 },
+      scheme: ENV.fetch("APPLICATION_SCHEME") { 'http' }
+    }.reject {|k, v| v.blank? }
+  
     config.roadie.url_options = {
-      host: "kirandadam.com", 
-      scheme: "https"
-    }
+      host: ENV.fetch("APPLICATION_HOSTNAME") { 'localhost' },
+      port: ENV.fetch("APPLICATION_PORT")     { 3000 },
+      scheme: ENV.fetch("APPLICATION_SCHEME") { 'http' }
+    }.reject {|k, v| v.blank? }
     
     config.admin = ActiveSupport::OrderedOptions.new.tap do |admin|
       admin.username    = ENV['ADMIN_USERNAME']
