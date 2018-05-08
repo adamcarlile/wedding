@@ -9,7 +9,7 @@ class Invitee < ApplicationRecord
   validates :lastname, presence: true
 
   def to_email
-    "<#{name}> #{email}"
+    "#{name} <#{email}>"
   end
 
   def name

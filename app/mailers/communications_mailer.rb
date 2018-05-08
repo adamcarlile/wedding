@@ -1,5 +1,7 @@
 class CommunicationsMailer < ApplicationMailer
   include Roadie::Rails::Automatic
+
+  default from: "wedding@kirandadam.com"
   
   def question(delivery)
     @delivery = delivery
