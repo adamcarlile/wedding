@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 
   namespace :authenticated, path: 'me' do
     resource :dashboards
+    scope module: 'communications' do
+      resources :questions, only: []do
+        resource :response, only: :create
+      end
+    end
   end
 
   namespace :admin do

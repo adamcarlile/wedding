@@ -2,6 +2,7 @@ class Communications::Delivery < ApplicationRecord
   include ActiveModel::Transitions 
 
   belongs_to :invitee
+  has_one :party, through: :invitee
   belongs_to :communication
 
   state_machine do

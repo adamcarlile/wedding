@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_04_205503) do
+ActiveRecord::Schema.define(version: 2018_05_08_165418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -37,12 +37,24 @@ ActiveRecord::Schema.define(version: 2018_05_04_205503) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "auth_codes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "authable_type"
+    t.uuid "authable_id"
+    t.string "token", null: false
+    t.integer "usage_count", default: 0
+    t.datetime "revoked_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["authable_type", "authable_id"], name: "index_auth_codes_on_authable_type_and_authable_id"
+  end
+
   create_table "communications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.string "followup"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "login_prompt"
   end
 
   create_table "communications_deliveries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

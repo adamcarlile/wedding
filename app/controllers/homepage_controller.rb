@@ -3,6 +3,7 @@ class HomepageController < ApplicationController
   before_action :redirect_to_dashboard, if: :logged_in?
 
   def show
+    flash.now[:alert] = warden.message if warden.message.present?
   end
 
   protected

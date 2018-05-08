@@ -1,2 +1,2 @@
 .column
-  = button_to question.prompt, '#', class: "button #{question.css_class} is-fullwidth"
+  = button_to question.prompt, authenticated_question_response_path(question), class: "button #{question.css_class} is-fullwidth"

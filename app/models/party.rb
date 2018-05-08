@@ -4,6 +4,8 @@ class Party < ApplicationRecord
 
   has_many :invitees, inverse_of: :party
   has_many :communications, -> { distinct }, through: :invitees
+  has_many :responses, class_name: 'Communications::Response'
+  has_many :access_codes, class_name: 'AuthCode', as: :authable
 
   accepts_nested_attributes_for :invitees, allow_destroy: true, reject_if: :all_blank
 
@@ -11,6 +13,10 @@ class Party < ApplicationRecord
 
   validates :category, presence: true
   validates :priority, presence: true
+
+  def access_code
+    access_codes.first_or_create
+  end
 
   def to_s
     if family_name?

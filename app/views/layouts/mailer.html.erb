@@ -8,10 +8,22 @@
   <body>
     <div class="container">
       <div class="header">
-        <%= image_tag 'mailer/kir-and-adam.png'%>
+        <table>
+          <tr>
+            <td class="left">
+              <%= content_for?(:header) ? yield(:header) : content_tag(:p, 'Hello') %>
+            </td>
+            <td class="right">
+              <%= image_tag 'mailer/kir-and-adam.png'%>
+            </td>
+          </tr>
+        </table>
       </div>
       <div class="body">
         <%= yield %>
+      </div>
+      <div class="footer">
+        <%= link_to 'kirandadam.com', 'https://kirandadam.com' %> | <%= mail_to 'wedding@kirandadam.com' %>
       </div>
     </div>
   </body>

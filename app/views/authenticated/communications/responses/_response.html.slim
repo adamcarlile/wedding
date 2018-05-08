@@ -1,0 +1,3 @@
+div.column
+  = content_tag(:p, response.question.prompt, class: "button #{response.question.css_class} is-fullwidth")
+  p.has-text-centered.is-size-7 You answered on #{response.created_at.to_s(:long)}

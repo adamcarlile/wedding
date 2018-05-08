@@ -1,10 +1,9 @@
 class SessionsController < ApplicationController
 
   def create
-    if form.valid?
-      authenticate!
+    if form.valid? && authenticate!
+      redirect_to authenticated_dashboards_path
     end
-    redirect_to authenticated_dashboards_path if logged_in?
   end
 
   def destroy

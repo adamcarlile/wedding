@@ -1,2 +1,14 @@
-<%= image_tag @delivery.communication.image.attachment.variant(resize: "600x600") if @delivery.communication.image.attached? %>
-<%= raw @delivery.communication.body %>
+<% content_for :header do %>
+  <p>Hello <%= @delivery.party.to_s %></p>
+  <p class="small">Login Code: <strong><%= @delivery.party.code %></strong> | <%= link_to 'Log In', authenticated_dashboards_url(token: @delivery.party.access_code.token) %></p>
+<% end %>
+
+<%= link_to authenticated_dashboards_url(token: @delivery.party.access_code.token) do %>
+  <%= image_tag @delivery.communication.image.attachment.variant(resize: "600x600^") if @delivery.communication.image.attached? %>
+<% end %>
+<div class="content">
+  <%= raw @delivery.communication.body %>
+</div>
+<div class="questions">
+  <%= link_to @delivery.communication.login_prompt, authenticated_dashboards_url(token: @delivery.party.access_code.token), class: "button is-primary is-fullwidth" %>
+</div>

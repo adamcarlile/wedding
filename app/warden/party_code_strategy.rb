@@ -7,7 +7,7 @@ class PartyCodeStrategy < Warden::Strategies::Base
     if party.present? && lastnames.include?(lastname.downcase)
       success!(party)
     else
-      fail!
+      fail!("Oops, looks like we couldn't match those login details")
     end
   end
 

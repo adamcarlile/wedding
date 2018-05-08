@@ -1,5 +1,5 @@
 module Authenticated
-  class DashboardsController < ApplicationController
+  class DashboardsController < BaseController
     def show
     end
 

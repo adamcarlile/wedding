@@ -4,4 +4,7 @@ div.content
   = raw communication.body
 div.questions
   div.columns
-    = render(communication.questions)
+    - if communication.responses.for_party(current_user).any?
+      = render(communication.responses.for_party(current_user))
+    - else
+      = render(communication.questions)
