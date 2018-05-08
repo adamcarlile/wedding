@@ -1,9 +1,7 @@
 module Communications
   class DeliveryJob < ApplicationJob
 
-    def perform(delivery_gid)
-      @delivery = GlobalID.find(delivery_gid)
-
+    def perform(delivery)
       delivery.deliver!
     end
 

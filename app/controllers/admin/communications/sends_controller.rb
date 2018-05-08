@@ -2,8 +2,8 @@ class Admin::Communications::SendsController < ApplicationController
 
   def create
     Admin::Communications::SendService.run!(communication, send_form) do |on|
-      on.success ->() { redirect_to :back }
-      on.failure ->() { redirect_to :back, alert: 'Oops, looks like something went wrong'}
+      on.success ->(service, communication) { redirect_to admin_communication_path(communication), notice: 'Delivery pending' }
+      on.failure ->(error, service, communication) { redirect_to :back, alert: 'Oops, looks like something went wrong'}
     end
   end
 

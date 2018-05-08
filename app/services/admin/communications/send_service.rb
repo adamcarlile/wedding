@@ -10,7 +10,8 @@ module Admin
 
       def run
         if form.valid?
-          invitees.each {|i| ::Communications::Delivery.find_or_create_by(communication: communication, invitee: i).deliver! }
+          invitees.each {|i| ::Communications::Delivery.find_or_create_by(communication: communication, invitee: i) }
+          fire :success, communication
         else
           fire :failure, form
         end

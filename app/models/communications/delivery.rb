@@ -5,6 +5,8 @@ class Communications::Delivery < ApplicationRecord
   has_one :party, through: :invitee
   belongs_to :communication
 
+  after_create :enqueue
+
   state_machine do
     state :pending
     state :dispatched
@@ -17,6 +19,10 @@ class Communications::Delivery < ApplicationRecord
     event :unsuccessful do
       transitions to: :failed, from: :pending
     end
+  end
+
+  def enqueue
+    Communications::DeliveryJob.perform_later(self.to_global_id.to_s)
   end
 
   def deliver!
