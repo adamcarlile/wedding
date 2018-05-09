@@ -1,5 +1,7 @@
 tr
   td class="priority-#{party.priority}"
+  td width="15px"
+    = fa_icon('exclamation-triangle') unless party.email_supplied?
   td 
     code = party.code
   td

@@ -21,6 +21,10 @@ class Party < ApplicationRecord
     access_codes.first_or_create
   end
 
+  def email_supplied?
+    invitees.map {|x| x.email.present? }.any?
+  end
+
   def to_s
     if family_name?
       [invitees.map(&:firstname).to_sentence(two_words_connector: ' & '), family_name].join(' ')
