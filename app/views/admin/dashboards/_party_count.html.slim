@@ -1,0 +1,15 @@
+article.tile.is-primary.is-child.box
+  h3.title.is-size-5 = [cat.to_s.humanize, ' : ', Party.category(cat).sum(:invitees_count)].join(' ').html_safe
+  div.columns
+    div.column.padbox
+      div.high.has-background-primary.has-text-weight-bold.has-text-centered
+        h4.is-size-6 High
+        p.is-size-4 = Party.category(cat).priority(:high).sum(:invitees_count)
+    div.column.padbox
+      div.medium.has-background-warning.has-text-weight-bold.has-text-centered
+        h4.is-size-6 Medium
+        p.is-size-4 = Party.category(cat).priority(:medium).sum(:invitees_count)
+    div.column.padbox
+      div.low.has-text-weight-bold.has-text-centered
+        h4.is-size-6 Low
+        p.is-size-4 = Party.category(cat).priority(:low).sum(:invitees_count)

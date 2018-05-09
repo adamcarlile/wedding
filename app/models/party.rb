@@ -2,10 +2,10 @@ class Party < ApplicationRecord
   CATEGORIES = [:grooms_family, :grooms_friends, :brides_family, :brides_friends]
   PRIORITIES = [:high, :medium, :low]
 
-  has_many :invitees, inverse_of: :party
+  has_many :invitees, inverse_of: :party, dependent: :destroy
   has_many :communications, -> { distinct }, through: :invitees
-  has_many :responses, class_name: 'Communications::Response'
-  has_many :access_codes, class_name: 'AuthCode', as: :authable
+  has_many :responses, class_name: 'Communications::Response', dependent: :destroy
+  has_many :access_codes, class_name: 'AuthCode', as: :authable, dependent: :destroy
 
   accepts_nested_attributes_for :invitees, allow_destroy: true, reject_if: :all_blank
 
@@ -13,6 +13,9 @@ class Party < ApplicationRecord
 
   validates :category, presence: true
   validates :priority, presence: true
+
+  scope :category, ->(cat) { where(category: cat) }
+  scope :priority, ->(pri) { where(priority: pri) }
 
   def access_code
     access_codes.first_or_create

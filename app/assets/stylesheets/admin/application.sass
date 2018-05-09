@@ -22,3 +22,22 @@
 
 .failed
   @extend .is-danger
+
+.padbox
+  h4
+    border-bottom: 1px solid #ffffff
+
+  .high, .medium, .low
+    color: #FFFFFF
+    font-weight: bold
+    border-radius: $radius-large
+
+  .high
+    background-color: $primary
+    color: $primary-invert
+  .medium
+    background-color: $warning
+    color: $warning-invert
+  .low
+    background-color: $danger
+    color: $primary-invert

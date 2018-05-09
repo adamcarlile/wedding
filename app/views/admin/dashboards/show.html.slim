@@ -1,0 +1,34 @@
+- content_for :title do
+  Dashboard
+
+.tile.is-ancestor
+  .tile.is-vertical.is-parent
+    = render(partial: 'party_count', locals: { cat: :grooms_family } )
+  .tile.is-vertical.is-parent
+    = render(partial: 'party_count', locals: { cat: :grooms_friends } )
+  .tile.is-vertical.is-parent
+    = render(partial: 'party_count', locals: { cat: :brides_family } )
+  .tile.is-vertical.is-parent
+    = render(partial: 'party_count', locals: { cat: :brides_friends } )
+.tile.is-ancestor
+  .tile.is-vertical.is-parent
+    article.tile.is-child.box
+      h4.title.is-5 Communications
+      - Communication.includes(:questions).all.each do |communication|
+        h4.title.is-6 = link_to communication.title, admin_communication_path(communication)
+        table.table.is-fullwidth.is-narrow
+          thead
+            tr
+              th
+              th width="70%"
+              th
+          tbody
+            - total = communication.questions.map {|x| x.responses.count }.sum
+            - communication.questions.each do |question|
+              tr
+                td = question.prompt
+                td
+                  progress.progress.is-large *{ value: question.responses.count, max: total }
+                    = question.responses.count
+                td = question.responses.count
+

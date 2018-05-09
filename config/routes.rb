@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    root to: 'dashboards#show'
     resources :parties
     resources :communications do
       resources :sends, module: :communications
