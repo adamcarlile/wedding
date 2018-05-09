@@ -24,6 +24,7 @@ module Admin
 
     def create
       if resource.update(permitted_params)
+        resource.image.attach(params[:communication][:image]) if params[:communication][:image]
         redirect_to admin_communications_path, notice: 'Communication created'
       else
         render :new
