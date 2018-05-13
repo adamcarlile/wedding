@@ -1,0 +1,11 @@
+.card
+  .card-header
+    p.card-header-title = question.prompt
+  .card-content
+    .content
+      - if question.responses.any?
+        ul
+          - question.responses.each do |response|
+             = content_tag(:li, response.party.to_s) if response.party
+      - else
+         = render_flash(:notice) { 'No responses yet' }
