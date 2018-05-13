@@ -4,4 +4,7 @@ tr
     p.title.is-size-6 = delivery.invitee.name
     p.subtitle.is-size-7 = delivery.invitee.email
   td
-    = link_to fa_icon('envelope'), '#', class: 'button'
+    p.is-size-7 = delivery.created_at.to_s(:short)
+  td
+    div.is-pulled-right
+      = link_to fa_icon('envelope'), admin_communication_delivery_redeliver_path(resource, delivery), class: 'button is-small', method: :post

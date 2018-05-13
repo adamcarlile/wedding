@@ -1,4 +1,4 @@
-class Admin::Communications::SendsController < ApplicationController
+class Admin::Communications::SendsController < Admin::BaseController
 
   def create
     Admin::Communications::SendService.run!(communication, send_form) do |on|

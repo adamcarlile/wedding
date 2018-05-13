@@ -16,7 +16,10 @@ Rails.application.routes.draw do
     root to: 'dashboards#show'
     resources :parties
     resources :communications do
-      resources :sends, module: :communications
+      resources :sends, only: :create, module: :communications
+      resources :deliveries, module: :communications, only: [] do
+        post :redeliver
+      end
     end
   end
 
