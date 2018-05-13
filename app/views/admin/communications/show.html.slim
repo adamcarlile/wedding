@@ -18,11 +18,11 @@ div.columns
           th
       tbody
         = render(resource.deliveries.active)
-  - if resource.image.attached?
-    div.column
-      = image_tag resource.image.variant(resize: "600x600") if resource.image.attached?
+  div.column
+    h3.is-size-5.title Questions & Responses
+    = render(partial: 'question', collection: resource.questions)
   div.column.content
+    = image_tag resource.image.variant(resize: "600x600") if resource.image.attached?
     = raw resource.body
-    = content_tag(:div, render(resource.questions), class: 'tags')
     hr
     = raw resource.followup
