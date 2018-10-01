@@ -1,3 +1,4 @@
+- content_for :title { "Your details" }
 div#details
   = simple_form_for(resource, url: authenticated_details_path) do |f|
     = render(partial: 'authenticated/details/invitees/list', locals: { f: f, invitees: current_user.invitees })

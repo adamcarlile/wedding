@@ -1,5 +1,6 @@
 - content_for :title { "Where to stay" }
 div.content
+  = render_polaroid
   p Salt Rock is a holiday seaside town located 20 minutes from Durban Airport (King Shaka International Airport). 
   p There are a number of hotels, B&Bs, apartments & houses to rent through Air BnB in this area. 
     But it is a busy time of year and being that this weekend is after Easter and on a long weekend in South Africa you may need to book sooner than later.
@@ -7,12 +8,14 @@ div.content
   h4#self-catering Self Catering
   p #{link_to("Where to stay", "https://www.wheretostay.co.za/town/salt-rock/accommodation")} have a wonderful selection of places in the area, 
     however we've included a few of our favourites below
+  iframe src="https://www.google.com/maps/d/u/0/embed?mid=1cF-IiSQxdlULcBe81fWmcfLCQjEwKl8L" width="100%" height="400px"
   ul
     li #{link_to("The Lesters", "https://www.wheretostay.co.za/the-lesters-self-catering-accommodation-salt-rock")}
     li #{link_to("Salties Beach House", "https://www.wheretostay.co.za/saltiesbeachhouse-self-catering-cottage-accommodation-salt-rock-north-coast")}
     li #{link_to("Dunkirk estate", "http://www.dunkirkestate.co.za/about-us")} private estate where you can #{link_to("book self catering accommodation", "https://www.safarinow.com/destinations/dunkirk-estate/hub.aspx")}, 
       the estate is close to the beach and the shops and has a great restaurant within the estate.
   h4#hotels Hotels
+  iframe src="https://www.google.com/maps/d/u/0/embed?mid=1nuMUs4WaYD6UrV2j3JJAcLucvD4Q6X2I" width="100%" height="400px">
   ul
     li #{link_to("Salt Rock Hotel", "http://www.saltrockbeach.co.za/")}
     li #{link_to("Coco De Mer, Ballito", "http://www.coco-de-mer.co.za/")}

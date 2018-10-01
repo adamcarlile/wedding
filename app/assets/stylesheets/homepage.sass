@@ -16,3 +16,42 @@
 
 .drop-shadow
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5)
+
+.page-splash
+  margin-left: -20px
+  margin-top: -10px
+  margin-right: -20px
+  margin-bottom: 20px
+  padding: 20px
+  height: 5em
+  
+  h1
+    line-height: 1em
+    font-size: 3em
+    font-weight: bold
+    @extend .drop-shadow
+    @extend .is-cursive
+
+.menu-list 
+  a.is-active
+    background-color: $primary
+
+.relative
+  position: relative
+
+.polaroid
+  float: right
+  width: 300px
+  margin-right: -50px
+  margin-top: -50px
+  transform: rotate(12deg)
+
+.leaves
+  position: absolute
+
+  &.top-left
+    top: -12px
+    left: -12px
+  &.bottom-right
+    bottom: -12px
+    right: -12px

@@ -5,6 +5,8 @@ html
     = stylesheet_link_tag    "application", media: 'all'
     = javascript_include_tag "application"
     = stylesheet_link_tag    "https://fonts.googleapis.com/css?family=Allura|Raleway"
+    = javascript_include_tag "https://api.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js"
+    = stylesheet_link_tag    "https://api.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css"
     = csrf_meta_tags
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
@@ -33,11 +35,15 @@ html
                   - l.link "Communications", authenticated_communications_path
                   - l.link "Your details", edit_authenticated_details_path
           div.column.is-three-quarters
-            div.box
+            div.box.relative
+              = image_tag('leaves-top-left.png', class: 'leaves top-left')
+              = image_tag('leaves-bottom-right.png', class: 'leaves bottom-right')
               div.level
                 div.level-left
-                  p.level-item = yield(:title)
                 div.level-right
-                  p.level-item Hello #{current_user.to_s}
+                  p.level-item style="font-size: 0.75em" Hello #{current_user.to_s}
                   p.level-item = link_to 'Log Out', sessions_path, class: 'button is-primary is-small', method: :delete
+              div.page-splash.hero.is-primary.is-bold
+                h1 = yield(:title)
               = yield
+              
