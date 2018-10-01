@@ -3,7 +3,6 @@ class Invitee < ApplicationRecord
 
   has_many :communication_deliveries, class_name: 'Communications::Delivery', dependent: :destroy
   has_many :communications, through: :communication_deliveries
-  has_many :attendances
 
   validates :firstname, presence: true
   validates :lastname, presence: true
