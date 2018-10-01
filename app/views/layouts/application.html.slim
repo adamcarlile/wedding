@@ -10,16 +10,29 @@ html
 
   body
     div#logged-in.background
-      div.columns
-        div.column.is-half.is-offset-one-quarter
-          div.header.has-text-centered
-            h1.title.is-cursive Kirsten &amp; Adam
-            h2.subtitle - 2019- 
-          div.box
-            div.level
-              div.level-left
-                p.level-item = yield(:title)
-              div.level-right
-                p.level-item Hello #{current_user.to_s}
-                p.level-item = link_to 'Log Out', sessions_path, class: 'button is-primary is-small', method: :delete
-            = yield
+      div.container
+        div.header.has-text-centered
+          h1.title.is-cursive Kirsten &amp; Adam
+          h2.subtitle - 2019- 
+        div.columns
+          div.column.is-one-quarter
+            div.box
+              = render_menu do |m|
+                - m.list "Wedding" do |l|
+                  - l.link "About us", about_us_authenticated_content_path
+                  - l.link "Details", details_authenticated_content_path
+                  - l.link "How to get here", how_to_get_here_authenticated_content_path
+                  - l.link "Where to stay", where_to_stay_authenticated_content_path
+                  - l.link "Things to do", things_to_do_authenticated_content_path
+                - m.list "Party" do |l|
+                  - l.link "Communications", authenticated_communications_path
+                  - l.link "Your details", edit_authenticated_details_path
+          div.column.is-three-quarters
+            div.box
+              div.level
+                div.level-left
+                  p.level-item = yield(:title)
+                div.level-right
+                  p.level-item Hello #{current_user.to_s}
+                  p.level-item = link_to 'Log Out', sessions_path, class: 'button is-primary is-small', method: :delete
+              = yield

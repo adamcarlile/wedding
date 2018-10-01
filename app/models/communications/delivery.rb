@@ -7,6 +7,9 @@ class Communications::Delivery < ApplicationRecord
   belongs_to :invitee
   has_one :party, through: :invitee
   belongs_to :communication
+  has_many :questions, through: :communication
+
+  delegate :title, :responses, to: :communication
 
   after_create :enqueue
 

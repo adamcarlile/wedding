@@ -5,8 +5,17 @@ Rails.application.routes.draw do
 
   namespace :authenticated, path: 'me' do
     resource :dashboards
+    resources :communications
+    resource :details
+    resource :content, only: [] do
+      get "about-us", to: 'about_us', as: 'about_us'
+      get "details", to: 'details', as: 'details'
+      get "how-to-get-here", to: 'how_to_get_here', as: 'how_to_get_here'
+      get "where-to-stay", to: 'where_to_stay', as: 'where_to_stay'
+      get "things-to-do", to: 'things_to_do', as: 'things_to_do'
+    end
     scope module: 'communications' do
-      resources :questions, only: []do
+      resources :questions, only: [] do
         resource :response, only: :create
       end
     end

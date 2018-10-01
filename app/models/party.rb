@@ -4,11 +4,14 @@ class Party < ApplicationRecord
 
   has_many :invitees, inverse_of: :party, dependent: :destroy
   has_many :communications, -> { distinct }, through: :invitees
+  has_many :communication_deliveries, -> {distinct }, through: :invitees
   has_many :responses, class_name: 'Communications::Response', dependent: :destroy
   has_many :access_codes, class_name: 'AuthCode', as: :authable, dependent: :destroy
+  has_one :address, as: :addressable
 
   accepts_nested_attributes_for :invitees, allow_destroy: true, reject_if: :all_blank
-
+  accepts_nested_attributes_for :address, reject_if: :all_blank
+  
   before_create { generate_code! }
 
   validates :category, presence: true
@@ -23,6 +26,10 @@ class Party < ApplicationRecord
 
   def email_supplied?
     invitees.map {|x| x.email.present? }.any?
+  end
+
+  def address
+    super || build_address
   end
 
   def to_s

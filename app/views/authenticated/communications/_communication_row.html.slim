@@ -1,0 +1,5 @@
+tr *communication_row.html_attributes
+  td = communication_row.icon
+  td = link_to communication_row.title, authenticated_communication_path(communication_row.communication)
+  td = communication_row.created_at.to_s(:short)
+  td = link_to 'View', authenticated_communication_path(communication_row.communication), class: 'button is-small is-primary is-pulled-right'

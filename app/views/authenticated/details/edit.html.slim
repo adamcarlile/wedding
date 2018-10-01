@@ -1,0 +1,6 @@
+div#details
+  = simple_form_for(resource, url: authenticated_details_path) do |f|
+    = render(partial: 'authenticated/details/invitees/list', locals: { f: f, invitees: current_user.invitees })
+    = render(partial: 'authenticated/details/address/form', locals: { f: f, address: current_user.address })
+    div.field
+      = f.button :submit, class: 'is-primary', value: 'Update'

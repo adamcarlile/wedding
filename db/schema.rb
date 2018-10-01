@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_08_165418) do
+ActiveRecord::Schema.define(version: 2018_10_01_150353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -35,6 +35,20 @@ ActiveRecord::Schema.define(version: 2018_05_08_165418) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "addresses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "addressable_type", null: false
+    t.uuid "addressable_id", null: false
+    t.string "line_1"
+    t.string "line_2"
+    t.string "city"
+    t.string "region"
+    t.string "country_code"
+    t.string "postal_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
 
   create_table "auth_codes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -94,6 +108,7 @@ ActiveRecord::Schema.define(version: 2018_05_08_165418) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "attendance", default: false
     t.index ["party_id"], name: "index_invitees_on_party_id"
   end
 

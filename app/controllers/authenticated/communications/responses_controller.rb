@@ -2,9 +2,9 @@ class Authenticated::Communications::ResponsesController < Authenticated::BaseCo
 
   def create
     if question.record_response!(current_user)
-      redirect_to authenticated_dashboards_path
+      redirect_to authenticated_communications_path, notice: "Thanks for responding!"
     else
-      redirect_to authenticated_dashboards_path, alert: 'Oops, looks like something went wrong'
+      redirect_to authenticated_communications_path, alert: 'Oops, looks like something went wrong'
     end
   end
 

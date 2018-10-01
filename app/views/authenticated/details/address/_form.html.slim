@@ -1,0 +1,14 @@
+= f.simple_fields_for :address do |af|
+  p.title.is-size-6 Address
+  div.field
+    = af.input :line_1, placeholder: 'Line 1', label: false
+  div.field
+    = af.input :line_2, placeholder: 'Line 2', label: false
+  div.field
+    = af.input :city, placeholder: 'City', label: false
+  div.field
+    = af.input :region, placeholder: 'Region', label: false
+  div.field
+    = af.input :postal_code, placeholder: 'Postal Code', label: false
+  div.field
+    = af.input :country_code, as: :select_box, collection: ISO3166::Country.all_names_with_codes, prompt: 'Please select a country', label: false

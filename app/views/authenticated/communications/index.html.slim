@@ -1,0 +1,10 @@
+div.communications-list
+  table.table.is-fullwidth
+    thead
+      tr
+        th 
+        th Subject
+        th Sent At
+        th
+    tbody
+      = render(collection: collection, partial: 'communication_row')
