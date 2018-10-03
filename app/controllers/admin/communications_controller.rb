@@ -43,7 +43,7 @@ module Admin
     protected
 
     def permitted_params
-      params.require(:communication).permit(:title, :body, :followup, :login_prompt, questions_attributes: [:id, :prompt, :css_class, :_destroy])
+      params.require(:communication).permit(:title, :body, :followup, :login_prompt, :redirect_route, questions_attributes: [:id, :prompt, :css_class, :_destroy])
     end
 
     def send_form

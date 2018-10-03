@@ -10,5 +10,5 @@
   <%= raw @delivery.communication.body %>
 </div>
 <div class="questions">
-  <%= link_to @delivery.communication.login_prompt, authenticated_dashboards_url(token: @delivery.party.access_code.token), class: "button is-primary is-fullwidth" %>
+  <%= link_to @delivery.communication.login_prompt, send(@delivery.communication.redirect_route, {token: @delivery.party.access_code.token}), class: "button is-primary is-fullwidth" %>
 </div>

@@ -8,6 +8,8 @@ div.field
   = f.input :login_prompt
 div.field
   = f.input :followup, as: :text
+div.field
+  = f.input :redirect_route, as: :select_box, collection: Rails.application.routes.named_routes.helper_names.select {|x| x.include?("url")}
 hr
 h3.title.is-size-3 Questions
 = f.simple_fields_for :questions do |question|
