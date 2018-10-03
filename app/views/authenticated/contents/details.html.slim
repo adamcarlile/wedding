@@ -1,10 +1,17 @@
-- content_for :title { "Details" }
-= render_polaroid
+- content_for :title { "Welcome!" }
 div.clock
 div.content
-  h4 Timeline
+  = render_polaroid
+  p We're so looking forward to having you with us for our big day! Please have a look through the pages on the left for some more information
+    about our wedding, and of course if there's anything specific you'd like to ask, then feel free to drop us a line #{mail_to('us@kirandadam.com')}
+  h4#venue Venue
+  p We'll be getting married at the beautiful #{link_to("Maroupi", "http://www.maroupiweddingvenue.co.za/")} venue, just outside of Umhlali.
+  p There is parking on site with security but we will be arranging taxis/minibuses to central pick up and drop off points for those guests who would prefer not to drive. 
+    Please let us know if you would like to opt in for lifts and where you are staying.
+  p Regrettably, due to numbers, partners are by invitation only and we love your kids but thought you might like the night off so Adults only please!
+  h4#timeline Timeline
   h5 Thursday 25th
-  p 3PM braai at our family beach cottage in Salt Rock for some of our early bird guests to meet our families prior to the big day. 
+  p 3PM braai #{content_tag(:i, "(South African for BBQ!)")} at our family beach cottage in Salt Rock for some of our early bird guests to meet our families prior to the big day. 
     We will cater all the food but please bring your own drinks. Please RSVP if you will be attending so we can cater for you.
   h5 Friday 26th
   p There is a night market every Friday at the #{link_to("Litchi Orchard", "http://www.litchiorchard.co.za/markets-events")} 
@@ -12,3 +19,4 @@ div.content
   p You are also in a stunning coastal resort, so sit back and enjoy a breather before the party begins on Saturday.
   h5 Saturday 27th
   p WEDDING DAY 🎉
+

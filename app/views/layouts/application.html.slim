@@ -18,11 +18,16 @@ html
           h2.subtitle - 2019- 
         div.columns
           div.column.is-one-quarter
-            div.box
+            div.padding
+              div.mobile-nav
+                = link_to "#{fa_icon(:bars)} #{yield(:title)}".html_safe, '#'
+
               = render_menu do |m|
                 - m.list "Wedding" do |l|
-                  - l.link "About us", about_us_authenticated_content_path
-                  - l.link "Details", details_authenticated_content_path
+                  / - l.link "About us", about_us_authenticated_content_path
+                  - l.link "Welcome!", details_authenticated_content_path do |welcome|
+                    - welcome.link "Venue", details_authenticated_content_path(anchor: 'venue')
+                    - welcome.link "Timeline", details_authenticated_content_path(anchor: 'timeline')
                   - l.link "How to get here", how_to_get_here_authenticated_content_path
                   - l.link "Where to stay", where_to_stay_authenticated_content_path do |where|
                     - where.link "Self Catering", where_to_stay_authenticated_content_path(anchor: 'self-catering')
@@ -35,15 +40,16 @@ html
                   - l.link "Communications", authenticated_communications_path
                   - l.link "Your details", edit_authenticated_details_path
           div.column.is-three-quarters
-            div.box.relative
-              = image_tag('leaves-top-left.png', class: 'leaves top-left')
-              = image_tag('leaves-bottom-right.png', class: 'leaves bottom-right')
-              div.level
-                div.level-left
-                div.level-right
-                  p.level-item style="font-size: 0.75em" Hello #{current_user.to_s}
-                  p.level-item = link_to 'Log Out', sessions_path, class: 'button is-primary is-small', method: :delete
-              div.page-splash.hero.is-primary.is-bold
-                h1 = yield(:title)
-              = yield
+            div.white
+              div.relative.padding.border
+                = image_tag('leaves-top-left-lg.png', class: 'leaves top-left')
+                = image_tag('leaves-bottom-right-lg.png', class: 'leaves bottom-right')
+                div.level
+                  div.level-left
+                  div.level-right
+                    p.level-item style="font-size: 0.75em" Hello #{current_user.to_s}
+                    p.level-item = link_to 'Log Out', sessions_path, class: 'button is-primary is-small', method: :delete
+                div.page-splash
+                  h1 = yield(:title)
+                = yield
               

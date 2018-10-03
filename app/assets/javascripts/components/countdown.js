@@ -26,7 +26,8 @@ $(document).ready(function() {
                     + '<div class="time-wrapper">'
                     + ' <span>Seconds</span>'
                     + ' <div class="time-box">%S</div>'
-                    + '</div>')
+                    + '</div>'
+                    + '<div class="clock-sub">Until the big day!</div>')
     );
   });
 })
