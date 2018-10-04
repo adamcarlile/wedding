@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def create
     if form.valid? && authenticate!
-      redirect_to authenticated_dashboards_path
+      redirect_to details_authenticated_content_path
     end
   end
 
