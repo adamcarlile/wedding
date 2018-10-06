@@ -4,19 +4,18 @@ div.content
   = render_polaroid
   p We're so looking forward to having you with us for our big day! Please have a look through the pages on the left for some more information
     about our wedding, and of course if there's anything specific you'd like to ask, then feel free to drop us a line #{mail_to('us@kirandadam.com')}
-  h4#venue Venue
-  p We'll be getting married at the beautiful #{link_to("Maroupi", "http://www.maroupiweddingvenue.co.za/")} venue, just outside of Umhlali.
-  p There is parking on site with security but we will be arranging taxis/minibuses to central pick up and drop off points for those guests who would prefer not to drive. 
-    Please let us know if you would like to opt in for lifts and where you are staying.
-  p Regrettably, due to numbers, partners are by invitation only and we love your kids but thought you might like the night off so Adults only please!
-  h4#timeline Timeline
-  h5 Thursday 25th
-  p 3PM braai #{content_tag(:i, "(South African for BBQ!)")} at our family beach cottage in Salt Rock for some of our early bird guests to meet our families prior to the big day. 
-    We will cater all the food but please bring your own drinks. Please RSVP if you will be attending so we can cater for you.
-  h5 Friday 26th
-  p There is a night market every Friday at the #{link_to("Litchi Orchard", "http://www.litchiorchard.co.za/markets-events")} 
-    in Salt Rock which is worth a visit.
-  p You are also in a stunning coastal resort, so sit back and enjoy a breather before the party begins on Saturday.
-  h5 Saturday 27th
-  p WEDDING DAY 🎉
-
+  h4.has-text-weight-bold.clear	 Wedding Day
+  h5.subtitle.is-6 Maroupi, Umhali, KZN, South Africa
+  = image_tag("maroupi-chapel-bottom.jpg")
+  p 2PM Wedding Ceremony
+  p Followed by cake, tea and a harvest table surrounded by sugar cane fields. 
+  p Dinner & dancing in the evening, carriages at 12PM
+  hr
+  h4.has-text-weight-bold Thursday
+  h5.subtitle.is-6 Location TBC
+  = image_tag("beach-cottage.jpg")
+  p 3PM braai #{content_tag(:i, "(South African for BBQ!)")} at a location somewhere in Salt Rock for some of our early bird guests to meet our families prior to the big day. 
+  h4.has-text-weight-bold Friday
+  hr
+  p While we'll be getting ready for the big day, feel free to enjoy the things that Salt Rock has to offer. Have a look at #{link_to("things to do", things_to_do_authenticated_content_path)} for some inspiration!
+  p You are in a stunning coastal resort, so sit back and enjoy a breather before the party begins on Saturday.

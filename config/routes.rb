@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resource :details
     resource :content, only: [] do
       get "about-us", to: 'about_us', as: 'about_us'
+      get "q-and-a", to: 'q_and_a', as: 'q_and_a'
       get "details", to: 'details', as: 'details'
       get "how-to-get-here", to: 'how_to_get_here', as: 'how_to_get_here'
       get "where-to-stay", to: 'where_to_stay', as: 'where_to_stay'

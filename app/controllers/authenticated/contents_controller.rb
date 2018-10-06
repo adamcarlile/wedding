@@ -6,6 +6,9 @@ module Authenticated
     def details
     end
 
+    def q_and_a
+    end
+
     def how_to_get_here
     end
 

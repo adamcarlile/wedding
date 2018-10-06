@@ -15,7 +15,7 @@ html
       div.container
         div.header.has-text-centered
           h1.title.is-cursive Kirsten &amp; Adam
-          h2.subtitle - 2019- 
+          h2.subtitle.is-6 - 27th April 2019 - 
         div.columns
           div.column.is-one-quarter
             div.padding
@@ -25,15 +25,22 @@ html
               = render_menu do |m|
                 - m.list "Wedding" do |l|
                   / - l.link "About us", about_us_authenticated_content_path
-                  - l.link "Welcome!", details_authenticated_content_path do |welcome|
-                    - welcome.link "Venue", details_authenticated_content_path(anchor: 'venue')
-                    - welcome.link "Timeline", details_authenticated_content_path(anchor: 'timeline')
+                  - l.link "Welcome!", details_authenticated_content_path do |sub|
+                    - sub.link "Wedding Day", "#"
+                    - sub.link "Thursday", "#"
+                    - sub.link "Friday", "#"
+                    / - welcome.link "Wedding Details", "#"
+                    / - welcome.link "Venue", details_authenticated_content_path(anchor: 'venue')
+                    / - welcome.link "Timeline", details_authenticated_content_path(anchor: 'timeline')
+                  / - l.link "Timeline", "#"
+                  - l.link "Q & A", q_and_a_authenticated_content_path
                   - l.link "How to get here", how_to_get_here_authenticated_content_path
                   - l.link "Where to stay", where_to_stay_authenticated_content_path do |where|
                     - where.link "Self Catering", where_to_stay_authenticated_content_path(anchor: 'self-catering')
                     - where.link "Hotels", where_to_stay_authenticated_content_path(anchor: 'hotels')
                   - l.link "Things to do", things_to_do_authenticated_content_path do |things|
                     - things.link "Beach", things_to_do_authenticated_content_path(anchor: 'beach')
+                    - things.link "Litchi Orchard", things_to_do_authenticated_content_path(anchor: 'litchi')
                     - things.link "Microlight", things_to_do_authenticated_content_path(anchor: 'microlight')
                     - things.link "Safari", things_to_do_authenticated_content_path(anchor: 'safari')
                 - m.list "Party" do |l|
