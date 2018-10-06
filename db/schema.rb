@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_03_230755) do
+ActiveRecord::Schema.define(version: 2018_10_06_103526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 2018_10_03_230755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+  end
+
+  create_table "attendances", force: :cascade do |t|
+    t.uuid "event_id", null: false
+    t.uuid "invitee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_attendances_on_event_id"
+    t.index ["invitee_id"], name: "index_attendances_on_invitee_id"
   end
 
   create_table "auth_codes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -99,6 +108,13 @@ ActiveRecord::Schema.define(version: 2018_10_03_230755) do
     t.datetime "updated_at", null: false
     t.index ["party_id"], name: "index_communications_responses_on_party_id"
     t.index ["question_id"], name: "index_communications_responses_on_question_id"
+  end
+
+  create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "invitees", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
