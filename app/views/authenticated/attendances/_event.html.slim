@@ -1,0 +1,28 @@
+div.rsvp
+  = link_to("RSVP", "#", class: 'button is-primary is-fullwidth')
+  div.panel
+    div.inner
+      table.table
+        thead
+          tr
+            th 
+            th
+            th 
+        tbody
+          - current_user.invitees.each do |invitee|
+            tr
+              td = invitee.name
+              - attendance = event.attendances.find_by(invitee: invitee)
+              td
+                - if attendance.present?
+                  span.tag.is-success Attending
+              td
+                - if attendance.present?
+                  = button_to("Decline", authenticated_event_invitees_attendances_path(event_id: event.id, invitee_id: invitee))
+                - else
+                  = button_to("Attending", authenticated_event_invitees_attendances_path(event_id: event.id))
+              / - if invitee.attending?(event)
+              /   td = button_to("Attending", authenticated_event_invitees_attendances_path(event_id: event.id))
+              / - else
+              /   - attendance = event.attendances.find_by(invitee: invitee)
+              /   td = button_to("Decline", authenticated_event_invitees_attendances_path(event_id: event.id, id: attendance))
