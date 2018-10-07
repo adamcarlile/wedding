@@ -42,6 +42,8 @@
         position: bottom
         repeat: no-repeat
       padding-bottom: 50px
+      +until($tablet)
+        background-size: 300px
 
 .page-splash
   margin-bottom: 20px
@@ -60,7 +62,7 @@
     text-align: center
     @extend .is-cursive
     +until($tablet)
-      font-size: 4.5em
+      font-size: 4.1em
 
 
 .menu
@@ -112,7 +114,7 @@
   margin-top: -50px
   transform: rotate(12deg)
   +until($tablet)
-    width: 200px
+    width: 150px
     margin-right: -20px
     margin-top: -20px
 
@@ -120,10 +122,19 @@
 .leaves
   width: 200px
   position: absolute
+  +until($tablet)
+    width: 120px
 
   &.top-left
     top: -50px
     left: -50px
+    +until($tablet)
+      top: -30px
+      left: -30px
   &.bottom-right
     bottom: -50px
     right: -50px
+    +until($tablet)
+      bottom: -30px
+      right: -30px
+      
