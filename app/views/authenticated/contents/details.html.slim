@@ -12,6 +12,7 @@ div.content
     p 2PM Wedding Ceremony
     p Followed by cake, tea and a harvest table surrounded by sugar cane fields. 
     p Dinner & dancing in the evening. Carriages at 12AM.
+    = render(partial: 'authenticated/attendances/event', locals: {event: Event.find_by(code: 'wedding')})
 = render_event do |event|
   - event.title "Thursday"
   - event.subtitle "Location TBC"
