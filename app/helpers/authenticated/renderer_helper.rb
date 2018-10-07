@@ -5,5 +5,12 @@ module Authenticated
       yield(renderer) if block_given?
       renderer.render
     end
+
+    def render_event(**options, &block)
+      renderer = EventRenderer.new(self, options)
+      yield(renderer) if block_given?
+      renderer.render
+    end
+    
   end
 end

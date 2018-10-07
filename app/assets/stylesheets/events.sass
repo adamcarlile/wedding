@@ -1,0 +1,46 @@
+div.event
+  padding-bottom: 5em
+  margin-bottom: 2em
+  background:
+    image: image_url("divider2.png")
+    repeat: no-repeat
+    position: bottom center
+  +until($tablet)
+    background-size: 300px
+
+  &:last-child
+    padding-bottom: 0px
+    background-image: none
+
+  div.header
+    position: relative
+    padding: 0px !important
+    margin-bottom: 1em
+    +until($tablet)
+      position: static
+  
+    div.titles
+      position: absolute
+      bottom: 0px
+      left: 0px
+      +until($tablet)
+        position: static
+
+      h4, h5
+        background-color: #ffffff
+        padding-right: 10px
+        display: inline-block 
+        clear: both
+        float: left
+        +until($tablet)
+          float: none
+          display: block
+      
+      h4
+        padding-top: 10px
+        padding-bottom: 0px
+        font-weight: bold
+        font-size: 1.2em
+      
+      h5
+        padding-top: 5px

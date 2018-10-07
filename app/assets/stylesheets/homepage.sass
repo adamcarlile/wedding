@@ -34,16 +34,14 @@
   +until($tablet)
     display: none
 
-.content
-  p
-    &:last-child
-      background:
-        image: asset_url("divider2.png")
-        position: bottom
-        repeat: no-repeat
-      padding-bottom: 50px
-      +until($tablet)
-        background-size: 300px
+.bg-wrapper
+  background:
+    image: asset_url("divider2.png")
+    position: bottom
+    repeat: no-repeat
+  padding-bottom: 50px
+  +until($tablet)
+    background-size: 300px
 
 .page-splash
   margin-bottom: 20px

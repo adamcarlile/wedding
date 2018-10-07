@@ -58,5 +58,6 @@ html
                     p.level-item = link_to 'Log Out', sessions_path, class: 'button is-primary is-small', method: :delete
                 div.page-splash
                   h1 = yield(:title)
-                = yield
+                div.bg-wrapper
+                  = yield
               
