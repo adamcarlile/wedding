@@ -7,6 +7,7 @@ class Party < ApplicationRecord
   has_many :communication_deliveries, -> {distinct }, through: :invitees
   has_many :responses, class_name: 'Communications::Response', dependent: :destroy
   has_many :access_codes, class_name: 'AuthCode', as: :authable, dependent: :destroy
+  has_many :events, -> { distinct }, through: :invitees
   has_one :address, as: :addressable
 
   accepts_nested_attributes_for :invitees, allow_destroy: true, reject_if: :all_blank
@@ -50,6 +51,10 @@ class Party < ApplicationRecord
 
   def invitee_last_names
     invitees.map(&:lastname)
+  end
+
+  def any_attending?(event)
+    events.find(event.id)&.attendances.any?
   end
 
   private

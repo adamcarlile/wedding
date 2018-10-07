@@ -15,6 +15,11 @@ Rails.application.routes.draw do
       get "where-to-stay", to: 'where_to_stay', as: 'where_to_stay'
       get "things-to-do", to: 'things_to_do', as: 'things_to_do'
     end
+    resources :events do
+      resource :invitees do
+        resources :attendances, only: [:create, :destroy]
+      end
+    end
     scope module: 'communications' do
       resources :questions, only: [] do
         resource :response, only: :create
