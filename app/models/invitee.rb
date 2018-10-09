@@ -16,10 +16,10 @@ class Invitee < ApplicationRecord
 
   def name
     [firstname, lastname].join(' ')
-  end
-
+  end  
+  
   def attend!(event)
-    attendances.find_or_create_by(event: event)
+  attendances.find_or_create_by(event: event)
   end
 
   def decline!(event)
@@ -27,7 +27,7 @@ class Invitee < ApplicationRecord
   end
 
   def attending?(event)
-    attendances.find_by(event: event)
+    attendances.find_by(event: event).any?
   end
 
 end

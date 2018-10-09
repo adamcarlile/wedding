@@ -24,6 +24,7 @@ gem 'sidekiq', require: ["sidekiq", "sidekiq/web"]
 gem 'roadie-rails'
 gem 'draper'
 gem 'country_select'
+gem 'aasm'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
