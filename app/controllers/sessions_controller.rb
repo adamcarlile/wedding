@@ -1,9 +1,14 @@
 class SessionsController < ApplicationController
+  layout 'layouts/homepage'
 
   def create
     if form.valid? && authenticate!
       redirect_to details_authenticated_content_path
     end
+  end
+
+  def show
+    redirect_to root_path
   end
 
   def destroy
