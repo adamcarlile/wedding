@@ -16,8 +16,8 @@ Rails.application.routes.draw do
       get "things-to-do", to: 'things_to_do', as: 'things_to_do'
     end
     resources :events do
-      resource :invitees do
-        resources :attendances, only: [:create, :destroy]
+      resources :invitees do
+        resource :attendances, path: ':event', only: [:create, :update]
       end
     end
     scope module: 'communications' do

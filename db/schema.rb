@@ -51,9 +51,10 @@ ActiveRecord::Schema.define(version: 2018_10_06_103526) do
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
 
-  create_table "attendances", force: :cascade do |t|
+  create_table "attendances", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "event_id", null: false
     t.uuid "invitee_id", null: false
+    t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_attendances_on_event_id"
@@ -115,6 +116,7 @@ ActiveRecord::Schema.define(version: 2018_10_06_103526) do
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_events_on_code", unique: true
   end
 
   create_table "invitees", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

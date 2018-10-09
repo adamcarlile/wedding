@@ -19,6 +19,7 @@ div.content
   - event.image "beach-cottage.jpg"
   - event.content do
     p 4PM sundowners at a location somewhere in Salt Rock for some of our early bird guests to meet our families prior to the big day. 
+    = render(partial: 'authenticated/attendances/event', locals: {event: Event.find_by(code: 'thursday')})
 = render_event do |event|
   - event.title "Friday"
   - event.subtitle "Salt Rock"
