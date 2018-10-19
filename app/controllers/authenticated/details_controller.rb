@@ -18,7 +18,7 @@ module Authenticated
     def permitted_params
       params.require(:party).permit({
         invitees_attributes: [:id, :firstname, :lastname, :phone, :email, :attendance], 
-        address_attributes: [:line_1, :line_2, :city, :region, :postal_code, :country_code]
+        address_attributes: [:id, :line_1, :line_2, :city, :region, :postal_code, :country_code]
       })
     end
 
