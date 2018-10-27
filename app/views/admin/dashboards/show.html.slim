@@ -13,22 +13,58 @@
 .tile.is-ancestor
   .tile.is-vertical.is-parent
     article.tile.is-child.box
-      h4.title.is-5 Communications
-      - Communication.includes(:questions).all.each do |communication|
-        h4.title.is-6 = link_to communication.title, admin_communication_path(communication)
+      h4.title.is-5 Events
+      - events.each do |event|
+        h4.title.is-5 = event.name
+        ul
+          li Attending: #{event.attending.count}
+          li Declined: #{event.declined.count}
+          li Undecided: #{event.undecided.count}
         table.table.is-fullwidth.is-narrow
           thead
             tr
               th
-              th width="70%"
-              th
-          tbody
-            - total = communication.questions.map {|x| x.responses.count }.sum
-            - communication.questions.each do |question|
-              tr
-                td = question.prompt
-                td
-                  progress.progress.is-large *{ value: question.responses.count, max: total }
-                    = question.responses.count
-                td = question.responses.count
+              th Name
+              th 
+                span.is-pulled-right RSVP
+            tbody
+              - event.attending.each do |attendance|
+                tr
+                  td.attending 
+                  td = attendance.invitee.name
+                  td
+                    span.button.is-success.is-small.is-pulled-right Attending
+              - event.declined.each do |attendance|
+                tr
+                  td.declined 
+                  td = attendance.invitee.name
+                  td.pulled-right
+                    span.button.is-danger.is-small.is-pulled-right Declined
+              - event.undecided.each do |attendance|
+                tr
+                  td.undecided 
+                  td = attendance.invitee.name
+                  td
+                    div.buttons.has-addons.right.is-pulled-right
+                      = link_to "Attending", admin_event_invitee_attendances_path(event_id: event.id, invitee_id: attendance.invitee.id, event: 'attend'), class: 'button is-primary is-small', method: :put
+                      = link_to "Decline", admin_event_invitee_attendances_path(event_id: event.id, invitee_id: attendance.invitee.id, event: 'decline'), class: 'button is-danger is-small', method: :put
+        hr
+      / h4.title.is-5 Communications
+      / - Communication.includes(:questions).all.each do |communication|
+      /   h4.title.is-6 = link_to communication.title, admin_communication_path(communication)
+      /   table.table.is-fullwidth.is-narrow
+      /     thead
+      /       tr
+      /         th
+      /         th width="70%"
+      /         th
+      /     tbody
+      /       - total = communication.questions.map {|x| x.responses.count }.sum
+      /       - communication.questions.each do |question|
+      /         tr
+      /           td = question.prompt
+      /           td
+      /             progress.progress.is-large *{ value: question.responses.count, max: total }
+      /               = question.responses.count
+      /           td = question.responses.count
 

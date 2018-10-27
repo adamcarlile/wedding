@@ -8,6 +8,20 @@
   .remove_fields
     margin-top: 0.75rem
 
+.attending, .declined, .undecided
+  width: 5px
+  font-size: 0px
+  padding: 0px !important
+
+.attending
+  @extend .is-success
+
+.declined
+  @extend .is-danger
+
+.undecided
+  background-color: #cccccc
+
 .priority-high, .dispatched
   padding: 0px !important
   @extend .is-success

@@ -30,6 +30,11 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'dashboards#show'
     resources :parties
+    resources :events do
+      resources :invitees do
+        resource :attendances, path: ':event', only: [:create, :update]
+      end
+    end
     resources :communications do
       resources :sends, only: :create, module: :communications
       resources :deliveries, module: :communications, only: [] do
