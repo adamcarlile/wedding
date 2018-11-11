@@ -10,7 +10,7 @@ class Admin::Communications::SendsController < Admin::BaseController
   protected
 
   def permitted_params
-    params.require(:senders_form).permit(:party_priority_group)
+    params.require(:senders_form).permit(invitee_ids: [])
   end
 
   def send_form

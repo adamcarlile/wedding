@@ -49,22 +49,3 @@
                       = link_to "Attending", admin_event_invitee_attendances_path(event_id: event.id, invitee_id: attendance.invitee.id, event: 'attend'), class: 'button is-primary is-small', method: :put
                       = link_to "Decline", admin_event_invitee_attendances_path(event_id: event.id, invitee_id: attendance.invitee.id, event: 'decline'), class: 'button is-danger is-small', method: :put
         hr
-      / h4.title.is-5 Communications
-      / - Communication.includes(:questions).all.each do |communication|
-      /   h4.title.is-6 = link_to communication.title, admin_communication_path(communication)
-      /   table.table.is-fullwidth.is-narrow
-      /     thead
-      /       tr
-      /         th
-      /         th width="70%"
-      /         th
-      /     tbody
-      /       - total = communication.questions.map {|x| x.responses.count }.sum
-      /       - communication.questions.each do |question|
-      /         tr
-      /           td = question.prompt
-      /           td
-      /             progress.progress.is-large *{ value: question.responses.count, max: total }
-      /               = question.responses.count
-      /           td = question.responses.count
-

@@ -2,12 +2,20 @@ h2.is-size-4.title = resource.title
 div.columns
   div.column.is-one-third
     = simple_form_for(send_form, url: admin_communication_sends_path(resource), as: :senders_form) do |f|
-      div.field.has-addons
-        = f.input :party_priority_group, as: :select_box, \
-          collection: Party::PRIORITIES, label_method: ->(value) { value.to_s.humanize }, \
-          label: false, prompt: 'Select a Group'
-        = f.button :submit, 'Send', class: 'is-primary'
-    br
+      table.table.is-fullwidth
+        thead
+          tr
+            th
+            th Name
+        tbody
+          = f.collection_check_boxes :invitee_ids, Invitee.all.order(:party_id), :id, :name, class: 'input' do |c|
+            tr
+              td = c.check_box
+              td
+                p.title.is-size-6 = c.label
+                p.subtitle.is-size-7 = c.object.email
+      = f.button(:submit, "Send", class: 'is-primary')
+    hr
     h3.is-size-5.title Already Sent to
     table.table.is-fullwidth
       thead
