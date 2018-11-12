@@ -22,7 +22,6 @@ module Admin
       private
 
       def invitees
-        binding.pry
         @invitees ||= Invitee.where(id: form.invitee_ids)
       end
 
