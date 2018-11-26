@@ -1,0 +1,5 @@
+tr
+  td class="priority-#{party.address_status}"
+  td
+    = content_tag(:div, render(party.invitees), class: 'tags')
+  td = simple_format party.address.to_s

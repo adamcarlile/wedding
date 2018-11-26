@@ -25,6 +25,10 @@ class Party < ApplicationRecord
     access_codes.first_or_create
   end
 
+  def address_status
+    address.persisted? ? 'high' : 'medium'
+  end
+
   def email_supplied?
     invitees.map {|x| x.email.present? }.any?
   end
