@@ -1,10 +1,4 @@
-- content_for :title { "Welcome!" }
-div.clock
-div.content
-  = render_polaroid
-  p We're so looking forward to having you with us for our big day! Please have a look through the pages on the left for some more information
-    about our wedding, and of course if there's anything specific you'd like to ask, then feel free to drop us a line #{mail_to('us@kirandadam.com')}
-= render_event do |event|
+= render_event id: 'wedding' do |event|
   - event.title "Wedding Day"
   - event.subtitle "Maroupi, Umhali, KZN, South Africa"
   - event.image "maroupi-chapel-bottom.jpg"
@@ -13,14 +7,14 @@ div.content
     p Followed by cake, tea and a harvest table surrounded by sugar cane fields. 
     p Dinner & dancing in the evening. Carriages at 12AM.
     = render(partial: 'authenticated/attendances/event', locals: {event: Event.find_by(code: 'wedding')})
-= render_event do |event|
+= render_event id: 'thursday' do |event|
   - event.title "Thursday"
   - event.subtitle "Location TBC"
   - event.image "beach-cottage.jpg"
   - event.content do
     p 4PM sundowners at a location somewhere in Salt Rock for some of our early bird guests to meet our families prior to the big day. 
     = render(partial: 'authenticated/attendances/event', locals: {event: Event.find_by(code: 'thursday')})
-= render_event do |event|
+= render_event id: 'friday' do |event|
   - event.title "Friday"
   - event.subtitle "Salt Rock"
   - event.image "market.jpg"

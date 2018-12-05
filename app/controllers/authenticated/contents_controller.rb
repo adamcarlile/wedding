@@ -1,9 +1,12 @@
 module Authenticated
   class ContentsController < BaseController
+    def rsvp
+    end
+
     def about_us
     end
 
-    def details
+    def wedding_details
     end
 
     def q_and_a

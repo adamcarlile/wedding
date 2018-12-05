@@ -23,12 +23,18 @@ class EventRenderer
   end
 
   def render
-    @context.content_tag(:div, class: 'event') do
+    @context.content_tag(:div, html_options) do
       [render_header, render_content].compact.join("\n").html_safe
     end.html_safe
   end
 
   private
+
+  def html_options
+    {
+      class: 'event'
+    }.merge(@options.slice(:id))
+  end
 
   def header
     [].tap do |output|

@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def create
     if form.valid? && authenticate!
-      redirect_to details_authenticated_content_path
+      redirect_to (session.delete(:redirect_uri) || details_authenticated_content_path)
     end
   end
 

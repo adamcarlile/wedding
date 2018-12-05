@@ -3,14 +3,15 @@ Rails.application.routes.draw do
 
   resource :sessions
 
-  namespace :authenticated, path: 'me' do
+  namespace :authenticated, path: '' do
     resource :dashboards
     resources :communications
     resource :details
-    resource :content, only: [] do
+    resource :content, only: [], path: '' do
+      get 'rsvp', to: 'rsvp', as: 'rsvp'
       get "about-us", to: 'about_us', as: 'about_us'
       get "q-and-a", to: 'q_and_a', as: 'q_and_a'
-      get "details", to: 'details', as: 'details'
+      get "wedding-details", to: 'details', as: 'details'
       get "how-to-get-here", to: 'how_to_get_here', as: 'how_to_get_here'
       get "where-to-stay", to: 'where_to_stay', as: 'where_to_stay'
       get "things-to-do", to: 'things_to_do', as: 'things_to_do'
@@ -50,4 +51,5 @@ Rails.application.routes.draw do
   end if Rails.env.production?
   mount Sidekiq::Web, at: "/sidekiq"
 
+  match "*path", to: redirect('/wedding-details'), via: :all
 end
