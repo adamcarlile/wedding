@@ -20,5 +20,8 @@ module Authenticated
 
     def things_to_do
     end
+
+    def gifts
+    end
   end
 end

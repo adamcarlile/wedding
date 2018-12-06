@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get "how-to-get-here", to: 'how_to_get_here', as: 'how_to_get_here'
       get "where-to-stay", to: 'where_to_stay', as: 'where_to_stay'
       get "things-to-do", to: 'things_to_do', as: 'things_to_do'
+      get 'gifts', to: 'gifts', as: 'gifts'
     end
     resources :events do
       resources :invitees do
