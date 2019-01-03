@@ -13,8 +13,8 @@ class AttendanceDecorator < ApplicationDecorator
   def controls
     content_tag(:div, class: 'buttons has-addons is-right') do
       [].tap do |array|
-        array << link_to("Attending", control_links[:attend], class: "button is-primary is-small", method: :put, remote: true) unless attending?
-        array << link_to("Decline", control_links[:decline], class: "button is-danger is-small", method: :put, remote: true) unless declined?
+        array << link_to("Attending", control_links[:attend], class: "button is-secondary is-small", method: :put, remote: true) unless attending?
+        array << link_to("Decline", control_links[:decline], class: "button is-secondary is-small", method: :put, remote: true) unless declined?
       end.join("\n").html_safe
     end
   end
