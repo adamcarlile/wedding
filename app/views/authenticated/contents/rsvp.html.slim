@@ -1,2 +1,9 @@
 - content_for(:title) { 'RSVP' }
+div.message.is-info
+  div.message-header
+    p How to RSVP
+  div.message-body
+    p You can indicate your attendance by clicking the buttons on the right for each person attending,
+      your attendance status is listed under the RSVP heading.
+    p Alternatively you can get in touch with us at #{mail_to("wedding@kirandadam.com")} to RSVP
 = render 'events'
