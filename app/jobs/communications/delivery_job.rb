@@ -1,8 +1,8 @@
 module Communications
   class DeliveryJob < ApplicationJob
 
-    def perform(delivery)
-      delivery.deliver!
+    def perform(delivery_gid)
+      GlobalID.find(delivery_gid).deliver!
     end
 
   end
