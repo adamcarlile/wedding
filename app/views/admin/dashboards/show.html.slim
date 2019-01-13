@@ -34,6 +34,7 @@
                   td.attending 
                   td = attendance.invitee.name
                   td = attendance.created_at.to_s(:long)
+                  td
                     span.button.is-success.is-small.is-pulled-right Attending
               - event.declined.each do |attendance|
                 tr
