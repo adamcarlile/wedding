@@ -25,6 +25,7 @@
             tr
               th
               th Name
+              th Date
               th 
                 span.is-pulled-right RSVP
             tbody
@@ -32,18 +33,20 @@
                 tr
                   td.attending 
                   td = attendance.invitee.name
-                  td
+                  td = attendance.created_at.to_s(:long)
                     span.button.is-success.is-small.is-pulled-right Attending
               - event.declined.each do |attendance|
                 tr
                   td.declined 
                   td = attendance.invitee.name
+                  td = attendance.created_at.to_s(:long)
                   td.pulled-right
                     span.button.is-danger.is-small.is-pulled-right Declined
               - event.undecided.each do |attendance|
                 tr
                   td.undecided 
                   td = attendance.invitee.name
+                  td -
                   td
                     div.buttons.has-addons.right.is-pulled-right
                       = link_to "Attending", admin_event_invitee_attendances_path(event_id: event.id, invitee_id: attendance.invitee.id, event: 'attend'), class: 'button is-primary is-small', method: :put
